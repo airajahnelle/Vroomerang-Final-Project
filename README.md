@@ -168,6 +168,6 @@ Press ENTER to continue...
 ---
 
 **Acknowledgements**  
-- We would like to express our sincere gratitude to *Instructor Christiana Grace Alib* for providing guidance, feedback, and support throughout the development of this project.  
+- We would like to express our sincere gratitude to **Instructor Christiana Grace Alib** for providing guidance, feedback, and support throughout the development of this project.  
 - Special thanks to my teammates for collaboration.  
-- Tools utilized in this project include *VSCode*, *Java JDK*, and *GitHub* for development, version control, and collaboration.
+- Tools utilized in this project include **VSCode**, **Java JDK**, and **GitHub** for development, version control, and collaboration.
