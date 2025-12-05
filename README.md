@@ -1,18 +1,29 @@
-## Getting Started
+# Vroomerang: Book it, Ride it, Return it
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A **console-based Java Vehicle Rental System** that lets users book cars, SUVs, and trucks, choose driver options, verify age and ID, and automatically generate receipts.
 
-## Folder Structure
+---
 
-The workspace contains two folders by default, where:
+## Features
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- **Reservation Fee:** ₱500 (fixed, non-refundable)  
+- **Driver Fee:** ₱800/day if requested  
+- **Age Verification:** Minimum **18 years old**  
+- **ID Verification:** Passport / UMID / DL / National ID  
+- **Reservation Receipt:** Automatically exports a TXT file in the `receipts/` folder  
+- **Vehicle Management:** Track **rented** and **available** vehicles  
+- **Return Vehicle:** Remove reservations and mark vehicles as available again  
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+---
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## How to Run
 
-## Dependency Management
+1. Open terminal or command prompt in the **project root folder** (where `src/` is located).  
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+2. Compile all Java files:
+
+```bash
+javac src/*.java
+
+---
+
