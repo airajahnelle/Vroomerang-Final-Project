@@ -27,5 +27,3 @@ javac src/*.java
 
 ---
 
-## Run the program:
-java -cp src Main
