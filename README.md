@@ -123,8 +123,6 @@ Age           : 22
 Payment Method: GCash (09171234567)
 --------------------------------------------
 C001   Toyota     Vios         ₱2000.00
-
----
 Days Rented   : 3
 With Driver   : Yes (₱500/day)
 Reservation Fee: ₱500.0
@@ -132,3 +130,17 @@ Reservation Fee: ₱500.0
 TOTAL COST    : ₱7100.0
 Status        : Paid
 ============================================
+
+--- Listing Reservations ---
+Customer ID: P1234567
+John Doe - Toyota Vios - 3 days - Paid
+
+--- Searching Booking ---
+Enter Customer ID to search: P1234567
+Booking Found!
+John Doe - Toyota Vios - 3 days - Paid
+
+--- Returning Vehicle ---
+Enter Customer ID to return vehicle: P1234567
+Vehicle returned successfully.
+Press ENTER to continue...
