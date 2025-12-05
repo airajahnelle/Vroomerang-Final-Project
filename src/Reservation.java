@@ -1,19 +1,19 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class Reservation {
-    public String customerName;
-    public String customerID;
-    public String idType;
-    public int age;
-    public Vehicle vehicle;
-    public int days;
-    public boolean withDriver;
-
     private static final double RESERVATION_FEE = 500.0;
-    private static final double CANCELLATION_FEE = 300.0;
+
+    private String customerName;
+    private String idType;
+    private String customerID;
+    private int age;
+    private Vehicle vehicle;
+    private int days;
+    private boolean withDriver;
+    private String paymentMethod;
+    private String paymentReference;
 
     public Reservation(String customerName, String idType, String customerID, int age,
                        Vehicle vehicle, int days, boolean withDriver) {
@@ -24,11 +24,16 @@ public class Reservation {
         this.vehicle = vehicle;
         this.days = days;
         this.withDriver = withDriver;
-        this.vehicle.rentOut();
     }
 
     public double getTotalCost() {
-        return vehicle.calculateRent(days, withDriver) + RESERVATION_FEE;
+        double baseCost = vehicle.calculateRent(days, withDriver);
+        return baseCost + RESERVATION_FEE;
+    }
+
+    public void setPayment(String method, String reference) {
+        this.paymentMethod = method;
+        this.paymentReference = reference;
     }
 
     public void displaySummary() {
@@ -39,56 +44,44 @@ public class Reservation {
         System.out.println("ID Type       : " + idType);
         System.out.println("Customer ID   : " + customerID);
         System.out.println("Age           : " + age);
+        System.out.println("Payment Method: " + paymentMethod + " (" + paymentReference + ")");
         System.out.println("--------------------------------------------");
         vehicle.displayInfo();
         System.out.println("Days Rented   : " + days);
         System.out.println("With Driver   : " + (withDriver ? "Yes (Php 500/day)" : "No"));
-        System.out.println("Reservation Fee: Php " + RESERVATION_FEE);
+        System.out.println("Reservation Fee: Php" + RESERVATION_FEE);
         System.out.println("--------------------------------------------");
-        System.out.println("TOTAL COST    : Php " + getTotalCost());
+        System.out.println("TOTAL COST    : Php" + getTotalCost());
+        System.out.println("Status        : Paid");
         System.out.println("============================================\n");
     }
 
     public void exportReceipt() {
         try {
-            // Ensure "receipts" folder exists
             File folder = new File("receipts");
-            if (!folder.exists()) {
-                folder.mkdir();
-            }
+            if (!folder.exists()) folder.mkdir();
 
             String filename = "receipts/Reservation_" + customerID + ".txt";
-            try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
-                writer.println("============================================");
-                writer.println("              RESERVATION RECEIPT");
-                writer.println("============================================");
-                writer.println("Customer Name : " + customerName);
-                writer.println("ID Type       : " + idType);
-                writer.println("Customer ID   : " + customerID);
-                writer.println("Age           : " + age);
-                writer.println("--------------------------------------------");
-                writer.printf("%-6s %-10s %-12s Php%7.2f\n",
-                        vehicle.getId(), vehicle.getBrand(), vehicle.getModel(), vehicle.getPricePerDay());
-                writer.println("Days Rented   : " + days);
-                writer.println("With Driver   : " + (withDriver ? "Yes (Php 500/day)" : "No"));
-                writer.println("Reservation Fee: Php " + RESERVATION_FEE);
-                writer.println("--------------------------------------------");
-                writer.println("TOTAL COST    : Php " + getTotalCost());
-                writer.println("============================================");
-            }
+            FileWriter writer = new FileWriter(filename);
 
-            System.out.println("Receipt saved as " + filename);
+            writer.write("=========== VROOMERANG RECEIPT ===========\n");
+            writer.write("Customer Name : " + customerName + "\n");
+            writer.write("ID Type       : " + idType + "\n");
+            writer.write("Customer ID   : " + customerID + "\n");
+            writer.write("Age           : " + age + "\n");
+            writer.write("Payment Method: " + paymentMethod + " (" + paymentReference + ")\n");
+            writer.write("----------------------------------------\n");
+            writer.write(vehicle.getId() + "   " + vehicle.getBrand() + "   " + vehicle.getModel() + "   ₱" + vehicle.getPricePerDay() + "\n");
+            writer.write("Days Rented   : " + days + "\n");
+            writer.write("With Driver   : " + (withDriver ? "Yes (Php 500/day)" : "No") + "\n");
+            writer.write("Reservation Fee: Php" + RESERVATION_FEE + "\n");
+            writer.write("----------------------------------------\n");
+            writer.write("TOTAL COST    : Php" + getTotalCost() + "\n");
+            writer.write("Status        : Paid\n");
+            writer.write("========================================\n");
+            writer.close();
         } catch (IOException e) {
             System.out.println("Error generating receipt: " + e.getMessage());
         }
-    }
-
-    public double cancelReservation() {
-        vehicle.returnBack();
-        System.out.println("Cancelling reservation for " + customerName);
-        System.out.println("Cancellation fee: Php " + CANCELLATION_FEE);
-        double refund = getTotalCost() - CANCELLATION_FEE;
-        System.out.println("Refund amount: Php " + refund);
-        return refund;
     }
 }

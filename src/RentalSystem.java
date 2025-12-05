@@ -1,4 +1,3 @@
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,13 +7,6 @@ public class RentalSystem {
     private Scanner sc = new Scanner(System.in);
 
     public RentalSystem() {
-        // Ensure receipts folder exists
-        File folder = new File("receipts");
-        if (!folder.exists()) {
-            folder.mkdir();
-        }
-
-        // Initialize vehicles with unique IDs
         vehicles.add(new Car("C001", "Toyota", "Vios", 2000));
         vehicles.add(new Car("C002", "Honda", "City", 1800));
         vehicles.add(new Suv("S001", "Toyota", "Fortuner", 3000));
@@ -25,9 +17,7 @@ public class RentalSystem {
 
     public void viewAvailableVehicles() {
         System.out.println("ID     Brand      Model        Price/day Status");
-        for (Vehicle v : vehicles) {
-            v.displayInfo();
-        }
+        for (Vehicle v : vehicles) v.displayInfo();
         waitForEnter();
     }
 
@@ -83,7 +73,25 @@ public class RentalSystem {
         }
 
         Reservation res = new Reservation(name, idType, customerID, age, vehicle, days, withDriver);
+
+        // Payment confirmation (only Paid reservations)
+        System.out.println("Payment Method for Reservation Fee:");
+        System.out.println("1. GCash");
+        System.out.print("Choose (1): ");
+        int payChoice = Integer.parseInt(sc.nextLine().trim());
+        if(payChoice == 1) {
+            System.out.print("Enter GCash number (e.g., 0917-123-4567): ");
+            String gcashNumber = sc.nextLine().trim();
+            if(!gcashNumber.matches("09\\d{9}")) {
+                System.out.println("Invalid GCash number. Reservation canceled.");
+                return; // Stop reservation
+            }
+            res.setPayment("GCash", gcashNumber);
+            System.out.println("Payment confirmed. Thank you!");
+        }
+
         reservations.add(res);
+        vehicle.rentOut();
         res.displaySummary();
         res.exportReceipt();
         waitForEnter();
@@ -128,9 +136,7 @@ public class RentalSystem {
     public Vehicle selectVehicle() {
         while (true) {
             System.out.println("Available Vehicles:");
-            for (Vehicle v : vehicles) {
-                v.displayInfo();
-            }
+            for (Vehicle v : vehicles) v.displayInfo();
             System.out.print("Enter vehicle ID to rent: ");
             String vid = sc.nextLine().trim();
             for (Vehicle v : vehicles) {
