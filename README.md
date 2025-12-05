@@ -146,27 +146,28 @@ Vehicle returned successfully.
 Press ENTER to continue...
 
 ---
+```
+## *Author and Acknowledgement*
 
-## **Author and Acknowledgement**
-
-**Author**
-**Aira Jahnelle Landicho** 
+**Author**  
+**Aira Jahnelle Landicho**  
 - Student / Developer  
 - GitHub: [https://github.com/airajahnelle](https://github.com/airajahnelle)  
 - Email: [airajahnellelandicho15@gmail.com](mailto:airajahnellelandicho15@gmail.com)
 
-**Kathlyn Magdalena**
-- Student / Developer
-- Github: [https://github.com/kxtlin](https://github.com/kxtlin)
+**Kathlyn Magdalena**  
+- Student / Developer  
+- GitHub: [https://github.com/kxtlin](https://github.com/kxtlin)  
 - Email: [kathlynn919@gmail.com](mailto:kathlynn919@gmail.com)
 
-**Franzen Mitra**
-- Student / Developer
-- Github: [https://github.com/fran1213](https://github.com/fran1213)
+**Franzen Mitra**  
+- Student / Developer  
+- GitHub: [https://github.com/fran1213](https://github.com/fran1213)  
 - Email: [franzenmitra@gmail.com](mailto:franzenmitra@gmail.com)
 
 ---
+
 **Acknowledgements**  
-- We would like to express our sincere gratitude to **Instructor Christiana Grace Alib** for providing guidance, feedback, and support throughout the development of this project.  
-- Special thanks to my teammates for collaboration.
-- Tools utilized in this project include **VSCode**, **Java JDK**, and **GitHub** for development, version control, and collaboration.
+- We would like to express our sincere gratitude to *Instructor Christiana Grace Alib* for providing guidance, feedback, and support throughout the development of this project.  
+- Special thanks to my teammates for collaboration.  
+- Tools utilized in this project include *VSCode*, *Java JDK*, and *GitHub* for development, version control, and collaboration.
