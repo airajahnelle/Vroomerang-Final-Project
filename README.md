@@ -61,3 +61,74 @@ This system solves the problem of managing vehicle rentals manually, providing a
 
    ```bash
    cd "C:\Users\airaj\.vscode\java\final project\Vroomerang\VROOMERANG\VROOMERANG"
+
+3. **Compile all Java files.**
+   Run the following command in the terminal:
+
+   ```bash
+   javac *.java
+
+4. **Run the program**
+   Start the program using this command:
+
+   ```bash
+   java Main
+
+5. **Follow on-screen instructions.**
+   - Book vehicles, choose driver option, pay the **reservation fee via GCash**, and return vehicles when done.
+   - The system will automatically generate a **receipt** and update the **status as Paid**
+
+---
+
+## **Sample Output**
+
+```text
+==============================================
+                 VROOMERANG SYSTEM            
+           Book it ~ Ride it ~ Return it      
+==============================================
+Press ENTER to start...
+
+=== Vroomerang Vehicle Rental ===
+1. View Available Vehicles
+2. Register Rental
+3. List Reservations
+4. Search Booking
+5. Return Vehicle
+6. Exit
+Enter choice: 2
+
+Enter customer name: John Doe
+Enter age: 22
+Select ID Type (Passport / UMID / DL / National ID): Passport
+Enter your ID number: P1234567
+Available Vehicles:
+C001  Toyota     Vios         ₱2000.00 
+C002  Honda      City         ₱1800.00
+Enter vehicle ID to rent: C001
+Number of days: 3
+With driver? (yes/no): yes
+Payment Method for Reservation Fee:
+Choose (1): 1
+Enter GCash number (e.g., 0917-123-4567): 09171234567
+Payment confirmed. Thank you!
+
+============================================
+              BOOKING SUMMARY
+============================================
+Customer Name : John Doe
+ID Type       : Passport
+Customer ID   : P1234567
+Age           : 22
+Payment Method: GCash (09171234567)
+--------------------------------------------
+C001   Toyota     Vios         ₱2000.00
+
+---
+Days Rented   : 3
+With Driver   : Yes (₱500/day)
+Reservation Fee: ₱500.0
+--------------------------------------------
+TOTAL COST    : ₱7100.0
+Status        : Paid
+============================================
