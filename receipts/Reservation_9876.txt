@@ -1,9 +1,9 @@
 =========== VROOMERANG RECEIPT ===========
 Customer Name : Aira
-ID Type       : National ID
-Customer ID   : 123456
-Age           : 18
-Payment Method: GCash (09962345678)
+ID Type       : Passport
+Customer ID   : 9876
+Age           : 20
+Payment Method: GCash (09987654321)
 ----------------------------------------
 C001   Toyota   Vios   ₱2000.0
 Days Rented   : 3

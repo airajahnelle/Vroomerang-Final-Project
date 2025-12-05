@@ -1,14 +1,15 @@
 ========== VROOMERANG RECEIPT ==========
-Date: 2025-12-05 20:10:46
-Customer Name: Aira
-ID Type: National ID
-Customer ID: 1234
-Age: 18
-Payment Method: GCash (0917-123-4567)
+Customer Name : Aira
+ID Type       : Passport
+Customer ID   : 1234
+Age           : 34
+Payment Method: GCash (09987654321)
 ----------------------------------------
-Vehicle: Toyota Vios
-Days Rented: 3
-With Driver: Yes (Php 500/day)
+C001 Toyota Vios ₱2000.0
+Days Rented   : 3
+With Driver   : Yes (Php 500/day)
 Reservation Fee: ₱500.0
-TOTAL COST: ₱8000.0
+----------------------------------------
+TOTAL COST    : Php8000.0
+Status        : Paid
 ========================================

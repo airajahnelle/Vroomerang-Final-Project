@@ -5,6 +5,7 @@ public class Main {
         RentalSystem system = new RentalSystem();
         Scanner sc = new Scanner(System.in);
 
+        
         clearScreen();
         System.out.println("==============================================");
         System.out.println("                 VROOMERANG SYSTEM            ");
@@ -31,16 +32,30 @@ public class Main {
                 System.out.print("Enter choice: ");
             }
             choice = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine(); 
 
             switch (choice) {
-                case 1: system.viewAvailableVehicles(); break;
-                case 2: system.registerRental(); break;
-                case 3: system.listReservations(); break;
-                case 4: system.searchBooking(); break;
-                case 5: system.returnVehicle(); break;
-                case 6: System.out.println("Exiting... Goodbye!"); break;
-                default: System.out.println("Invalid choice. Try again."); system.waitForEnter();
+                case 1:
+                    system.viewAvailableVehicles();
+                    break;
+                case 2:
+                    system.registerRental();
+                    break;
+                case 3:
+                    system.listReservations();
+                    break;
+                case 4:
+                    system.searchBooking();
+                    break;
+                case 5:
+                    system.returnVehicle();
+                    break;
+                case 6:
+                    System.out.println("Exiting... Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+                    system.waitForEnter();
             }
         } while (choice != 6);
 
@@ -50,8 +65,12 @@ public class Main {
     public static void clearScreen() {
         try {
             String os = System.getProperty("os.name").toLowerCase();
-            if (os.contains("win")) new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            else System.out.print("\033[H\033[2J"); System.out.flush();
+            if (os.contains("win")) {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } else {
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
+            }
         } catch (Exception e) {
             for (int i = 0; i < 50; i++) System.out.println();
         }
