@@ -50,6 +50,29 @@ This system solves the problem of managing vehicle rentals manually, providing a
 
 ---
 
+## **Project Structure**
+
+**Folder Layout:**
+
+```bash
+Vroomerang/
+├── VROOMERANG/ 
+│ ├── Main.java 
+│ ├── RentalSystem.java 
+│ ├── Vehicle.java 
+│ ├── Car.java
+│ ├── Suv.java 
+│ ├── Truck.java 
+│ ├── Reservation.java 
+│ └── README.md 
+│
+├── receipts/ 
+│ ├── Reservation_1234.txt
+│ ├── Reservation_12345.txt
+│ └── ... # Automatically created after each booking
+
+---
+```
 ## **How to Run the Program**
 **Requirements:** Java JDK installed  
 
@@ -171,3 +194,26 @@ Press ENTER to continue...
 - We would like to express our sincere gratitude to **Instructor Christiana Grace Alib** for providing guidance, feedback, and support throughout the development of this project.  
 - Special thanks to my teammates for collaboration.  
 - Tools utilized in this project include **VSCode**, **Java JDK**, and **GitHub** for development, version control, and collaboration.
+
+---
+
+## **Future Enhancements**
+
+- **Online Payment Gateway**  
+  - Expand beyond GCash to include PayPal, credit cards, or other e-wallets.
+
+- **Vehicle Availability Tracking**  
+  - Real-time updates on which vehicles are rented, reserved, or available.
+
+- **Penalty and Damage Management**  
+  - Add logic for late returns, damage fees, and automatic computation of penalties.
+
+- **Driver Rating and Feedback System**  
+  - Customers can rate optional drivers and leave feedback for service improvement.
+
+- **Report Generation**  
+  - Export monthly/weekly reports for admin use (e.g., revenue, most rented vehicle).
+
+- **Mobile App Integration**  
+  - Future migration to Android/iOS for booking anytime, anywhere.
+
