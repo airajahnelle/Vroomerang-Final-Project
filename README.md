@@ -18,8 +18,14 @@ A **console-based Java Vehicle Rental System** that lets users book cars, SUVs, 
 
 ## How to Run
 
-1. Open terminal or command prompt in the project root folder.  
+1. Open terminal or command prompt in the **project root folder** (where `src/` is located).  
+
 2. Compile all Java files:
 
 ```bash
 javac src/*.java
+
+---
+
+## Run the program:
+java -cp src Main
