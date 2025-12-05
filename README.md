@@ -2,7 +2,7 @@
 
 ---
 
-## 📌**Description / Overview**
+## 📌**Overview**
 *Vroomerang* is a **console-based vehicle rental system** that allows users to **book, rent, and return vehicles** easily.  
 It provides a **professional and smooth interface** with features such as:  
 
@@ -53,8 +53,11 @@ This system solves the problem of managing vehicle rentals manually, providing a
 ## **How to Run the Program**
 **Requirements:** Java JDK installed  
 
-1. Open **command prompt/terminal**.  
-2. Navigate to your project folder (where `.java` files are located).  
-3. Compile all Java files:
-```bash
-javac *.java
+1. **Open command prompt/terminal.**  
+   Navigate to your project folder where all `.java` files are located.
+
+2. **Navigate to the project folder.**  
+   Use the `cd` command to go to the folder containing your Java files.  
+
+   ```bash
+   cd "C:\Users\airaj\.vscode\java\final project\Vroomerang\VROOMERANG\VROOMERANG"
