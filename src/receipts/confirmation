@@ -1,0 +1,6 @@
+import java.io.File;
+
+File folder = new File("receipts");
+if (!folder.exists()) {
+    folder.mkdir();
+}

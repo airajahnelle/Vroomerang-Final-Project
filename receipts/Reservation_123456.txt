@@ -1,0 +1,15 @@
+============================================
+              RESERVATION RECEIPT
+============================================
+Customer Name : Aira
+ID Type       : National ID
+Customer ID   : 123456
+Age           : 18
+--------------------------------------------
+C001   Toyota     Vios         Php2000.00
+Days Rented   : 3
+With Driver   : Yes (Php 500/day)
+Reservation Fee: Php 500.0
+--------------------------------------------
+TOTAL COST    : Php 8900.0
+============================================
