@@ -5,7 +5,6 @@ public class Main {
         RentalSystem system = new RentalSystem();
         Scanner sc = new Scanner(System.in);
 
-        
         clearScreen();
         System.out.println("==============================================");
         System.out.println("                 VROOMERANG SYSTEM            ");
@@ -28,34 +27,20 @@ public class Main {
 
             while (!sc.hasNextInt()) {
                 System.out.println("Please enter a number (1-6).");
-                sc.next(); 
+                sc.next();
                 System.out.print("Enter choice: ");
             }
             choice = sc.nextInt();
-            sc.nextLine(); 
+            sc.nextLine();
 
             switch (choice) {
-                case 1:
-                    system.viewAvailableVehicles();
-                    break;
-                case 2:
-                    system.registerRental();
-                    break;
-                case 3:
-                    system.listReservations();
-                    break;
-                case 4:
-                    system.searchBooking();
-                    break;
-                case 5:
-                    system.returnVehicle();
-                    break;
-                case 6:
-                    System.out.println("Exiting... Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid choice. Try again.");
-                    system.waitForEnter();
+                case 1: system.viewAvailableVehicles(); break;
+                case 2: system.registerRental(); break;
+                case 3: system.listReservations(); break;
+                case 4: system.searchBooking(); break;
+                case 5: system.returnVehicle(); break;
+                case 6: System.out.println("Exiting... Goodbye!"); break;
+                default: System.out.println("Invalid choice. Try again."); system.waitForEnter();
             }
         } while (choice != 6);
 

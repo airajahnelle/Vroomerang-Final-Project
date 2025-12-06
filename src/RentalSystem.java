@@ -1,139 +1,144 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class RentalSystem {
-    private ArrayList<Reservation> reservations = new ArrayList<>();
     private ArrayList<Vehicle> vehicles = new ArrayList<>();
-    private Scanner sc = new Scanner(System.in);
+    private ArrayList<Reservation> reservations = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
 
     public RentalSystem() {
         vehicles.add(new Car("C001", "Toyota", "Vios", 2000));
         vehicles.add(new Car("C002", "Honda", "City", 1800));
-        vehicles.add(new Suv("S001", "Toyota", "Fortuner", 3000));
-        vehicles.add(new Suv("S002", "Mitsubishi", "Montero", 3200));
-        vehicles.add(new Truck("T001", "Mitsubishi", "L300", 4000));
-        vehicles.add(new Truck("T002", "Isuzu", "D-Max", 4500));
+        vehicles.add(new Suv("S001", "Mitsubishi", "Montero", 3500));
+        vehicles.add(new Suv("S002", "Toyota", "Fortuner", 3800));
+        vehicles.add(new Truck("T001", "Isuzu", "Elf", 4500));
+        vehicles.add(new Truck("T002", "Fuso", "Canter", 5000));
     }
 
     public void viewAvailableVehicles() {
-        System.out.println("ID     Brand      Model        Price/day Status");
+        System.out.println("\n=== AVAILABLE VEHICLES ===");
         for (Vehicle v : vehicles) {
-            v.displayInfo();
+            if (!v.isRented()) v.displayInfo();
         }
         waitForEnter();
     }
 
+    public void waitForEnter() {
+        System.out.println("\nPress ENTER to continue...");
+        sc.nextLine();
+    }
+
     public void registerRental() {
+        sc.nextLine();
         System.out.print("Enter customer name: ");
-        String name = sc.nextLine().trim();
+        String name = sc.nextLine();
 
-        int age;
-        while (true) {
-            System.out.print("Enter age: ");
-            try {
-                age = Integer.parseInt(sc.nextLine().trim());
-                if (age >= 18) break;
-                System.out.println("Must be at least 18 years old.");
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid number!");
+        System.out.print("Enter age: ");
+        int age = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter ID Type (Passport/UMID/DL/National ID): ");
+        String idType = sc.nextLine();
+
+        System.out.print("Enter ID Number: ");
+        String idNum = sc.nextLine();
+
+        System.out.println("\nAvailable Vehicles:");
+        for (Vehicle v : vehicles) {
+            if (!v.isRented()) v.displayInfo();
+        }
+
+        System.out.print("Enter Vehicle ID to rent: ");
+        String vid = sc.nextLine();
+
+        Vehicle selected = null;
+        for (Vehicle v : vehicles) {
+            if (v.getId().equalsIgnoreCase(vid) && !v.isRented()) {
+                selected = v;
+                break;
             }
         }
 
-        String idType;
-        while (true) {
-            System.out.print("Select ID Type (Passport / UMID / DL / National ID): ");
-            idType = sc.nextLine().trim();
-            if (idType.equalsIgnoreCase("Passport") || idType.equalsIgnoreCase("UMID") ||
-                    idType.equalsIgnoreCase("DL") || idType.equalsIgnoreCase("National ID")) break;
-            System.out.println("Invalid ID type!");
+        if (selected == null) {
+            System.out.println("Invalid or unavailable vehicle.");
+            waitForEnter();
+            return;
         }
 
-        System.out.print("Enter your ID number: ");
-        String customerID = sc.nextLine().trim();
+        System.out.print("Number of days: ");
+        int days = sc.nextInt();
+        sc.nextLine();
 
-        Vehicle vehicle = selectVehicle();
+        System.out.print("With driver? (yes/no): ");
+        boolean withDriver = sc.nextLine().equalsIgnoreCase("yes");
 
-        int days;
-        while (true) {
-            System.out.print("Number of days: ");
-            try {
-                days = Integer.parseInt(sc.nextLine().trim());
-                if (days > 0) break;
-                System.out.println("Must be at least 1 day.");
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid number!");
-            }
+        // PAYMENT
+        System.out.println("\n=== PAYMENT METHOD ===");
+        System.out.println("Reservation Fee: ₱500 (GCash Only)");
+        System.out.println("Send payment to: 0917-000-1122 (Vroomerang Owner)");
+        System.out.print("Enter your GCash number: ");
+        String gcashNum = sc.nextLine();
+
+        while (!gcashNum.matches("\\d{11}") && !gcashNum.matches("09\\d{9}")) {
+            System.out.print("Invalid number. Enter again: ");
+            gcashNum = sc.nextLine();
         }
 
-        boolean withDriver;
-        while (true) {
-            System.out.print("With driver? (yes/no): ");
-            String choice = sc.nextLine().trim().toLowerCase();
-            if (choice.equals("yes")) { withDriver = true; break; }
-            else if (choice.equals("no")) { withDriver = false; break; }
-            else System.out.println("Type yes or no.");
-        }
+        System.out.println("Payment confirmed. Thank you!");
 
-        Reservation res = new Reservation(name, idType, customerID, age, vehicle, days, withDriver);
+        // CREATE RESERVATION
+        Reservation res = new Reservation(name, age, idType, idNum,
+                selected, days, withDriver,
+                "GCash (" + gcashNum + ")", 500);
+
+        selected.setRented(true);
         reservations.add(res);
-        res.displaySummary();
-        res.exportReceipt();
+        res.saveReceipt();
+
+        System.out.println("\nReservation Completed! Receipt Generated.");
         waitForEnter();
     }
 
     public void listReservations() {
-        if (reservations.isEmpty()) System.out.println("No reservations.");
-        else for (Reservation r : reservations) r.displaySummary();
+        System.out.println("\n=== ALL RESERVATIONS ===");
+        for (Reservation r : reservations) {
+            System.out.println(r);
+        }
         waitForEnter();
     }
 
     public void searchBooking() {
-        System.out.print("Enter Customer ID to search: ");
-        String id = sc.nextLine().trim();
-        boolean found = false;
+        sc.nextLine();
+        System.out.print("Enter Customer ID: ");
+        String id = sc.nextLine();
+
         for (Reservation r : reservations) {
             if (r.getCustomerID().equals(id)) {
-                r.displaySummary();
-                found = true;
-                break;
+                System.out.println("\nFOUND:");
+                System.out.println(r);
+                waitForEnter();
+                return;
             }
         }
-        if (!found) System.out.println("Reservation not found.");
+
+        System.out.println("NOT FOUND.");
         waitForEnter();
     }
 
     public void returnVehicle() {
-        System.out.print("Enter Customer ID to return vehicle: ");
-        String id = sc.nextLine().trim();
-        Reservation found = null;
-        for (Reservation r : reservations) {
-            if (r.getCustomerID().equals(id)) { found = r; break; }
-        }
-        if (found != null) {
-            found.returnVehicle();
-            reservations.remove(found);
-            System.out.println("Vehicle returned successfully.");
-        } else System.out.println("Reservation not found!");
-        waitForEnter();
-    }
-
-    public Vehicle selectVehicle() {
-        while (true) {
-            System.out.println("Available Vehicles:");
-            for (Vehicle v : vehicles) {
-                v.displayInfo();
-            }
-            System.out.print("Enter vehicle ID to rent: ");
-            String vid = sc.nextLine().trim();
-            for (Vehicle v : vehicles) {
-                if (v.getId().equalsIgnoreCase(vid) && !v.isRented()) return v;
-            }
-            System.out.println("Invalid ID or vehicle already rented!");
-        }
-    }
-
-    public void waitForEnter() {
-        System.out.println("Press ENTER to continue...");
         sc.nextLine();
+        System.out.print("Enter Customer ID: ");
+        String id = sc.nextLine();
+
+        for (Reservation r : reservations) {
+            if (r.getCustomerID().equals(id)) {
+                r.getVehicle().setRented(false);
+                System.out.println("Vehicle returned successfully!");
+                waitForEnter();
+                return;
+            }
+        }
+
+        System.out.println("Reservation not found.");
+        waitForEnter();
     }
 }

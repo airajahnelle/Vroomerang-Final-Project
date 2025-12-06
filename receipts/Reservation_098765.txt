@@ -1,0 +1,15 @@
+========== VROOMERANG RECEIPT ==========
+Customer Name : Khat
+ID Type       : UMID
+Customer ID   : 098765
+Age           : 20
+Payment Method: GCash (09876543210)
+----------------------------------------
+C001 Toyota Vios ₱2000.0
+Days Rented   : 3
+With Driver   : Yes (Php 500/day)
+Reservation Fee: ₱500.0
+----------------------------------------
+TOTAL COST    : Php8000.0
+Status        : Paid
+========================================

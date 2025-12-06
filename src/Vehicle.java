@@ -19,8 +19,7 @@ public abstract class Vehicle {
     public double getPricePerDay() { return pricePerDay; }
     public boolean isRented() { return rented; }
 
-    public void rentOut() { rented = true; }
-    public void returnBack() { rented = false; }
+    public void setRented(boolean rented) { this.rented = rented; }
 
     public double calculateRent(int days, boolean withDriver) {
         double total = pricePerDay * days;

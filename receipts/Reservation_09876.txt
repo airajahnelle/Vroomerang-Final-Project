@@ -1,15 +1,15 @@
 ========== VROOMERANG RECEIPT ==========
-Customer Name : Franzen
-ID Type       : National ID
-Customer ID   : 123456
+Customer Name : Aira
+ID Type       : UMID
+Customer ID   : 09876
 Age           : 20
-Payment Method: GCash (09871234567)
+Payment Method: GCash (09872356789)
 ---------------------------------------
-C001 Toyota Vios ₱2000.0
-Days Rented   : 3
+S001 Mitsubishi Montero ₱3500.0
+Days Rented   : 5
 With Driver   : Yes (₱500/day)
 Reservation Fee: ₱500.0
 ---------------------------------------
-TOTAL COST    : ₱8000.0
+TOTAL COST    : ₱20500.0
 Status        : Paid
 =======================================
