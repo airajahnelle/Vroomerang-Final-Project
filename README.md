@@ -50,6 +50,29 @@ This system solves the problem of managing vehicle rentals manually, providing a
 
 ---
 
+## **Project Structure**
+
+**Folder Layout:**
+
+```bash
+Vroomerang/
+├── VROOMERANG/ 
+│ ├── Main.java 
+│ ├── RentalSystem.java 
+│ ├── Vehicle.java 
+│ ├── Car.java
+│ ├── Suv.java 
+│ ├── Truck.java 
+│ ├── Reservation.java 
+│ └── README.md 
+│
+├── receipts/ 
+│ ├── Reservation_1234.txt
+│ ├── Reservation_12345.txt
+│ └── ... # Automatically created after each booking
+
+---
+```
 ## **How to Run the Program**
 **Requirements:** Java JDK installed  
 
@@ -123,8 +146,6 @@ Age           : 22
 Payment Method: GCash (09171234567)
 --------------------------------------------
 C001   Toyota     Vios         ₱2000.00
-
----
 Days Rented   : 3
 With Driver   : Yes (₱500/day)
 Reservation Fee: ₱500.0
@@ -132,3 +153,67 @@ Reservation Fee: ₱500.0
 TOTAL COST    : ₱7100.0
 Status        : Paid
 ============================================
+
+--- Listing Reservations ---
+Customer ID: P1234567
+John Doe - Toyota Vios - 3 days - Paid
+
+--- Searching Booking ---
+Enter Customer ID to search: P1234567
+Booking Found!
+John Doe - Toyota Vios - 3 days - Paid
+
+--- Returning Vehicle ---
+Enter Customer ID to return vehicle: P1234567
+Vehicle returned successfully.
+Press ENTER to continue...
+
+---
+```
+## *Author and Acknowledgement*
+
+**Author**  
+**Aira Jahnelle Landicho**  
+- Student / Developer  
+- GitHub: [https://github.com/airajahnelle](https://github.com/airajahnelle)  
+- Email: [airajahnellelandicho15@gmail.com](mailto:airajahnellelandicho15@gmail.com)
+
+**Kathlyn Magdalena**  
+- Student / Developer  
+- GitHub: [https://github.com/kxtlin](https://github.com/kxtlin)  
+- Email: [kathlynn919@gmail.com](mailto:kathlynn919@gmail.com)
+
+**Franzen Mitra**  
+- Student / Developer  
+- GitHub: [https://github.com/fran1213](https://github.com/fran1213)  
+- Email: [franzenmitra@gmail.com](mailto:franzenmitra@gmail.com)
+
+---
+
+**Acknowledgements**  
+- We would like to express our sincere gratitude to **Instructor Christiana Grace Alib** for providing guidance, feedback, and support throughout the development of this project.  
+- Special thanks to my teammates for collaboration.  
+- Tools utilized in this project include **VSCode**, **Java JDK**, and **GitHub** for development, version control, and collaboration.
+
+---
+
+## **Future Enhancements**
+
+- **Online Payment Gateway**  
+  - Expand beyond GCash to include PayPal, credit cards, or other e-wallets.
+
+- **Vehicle Availability Tracking**  
+  - Real-time updates on which vehicles are rented, reserved, or available.
+
+- **Penalty and Damage Management**  
+  - Add logic for late returns, damage fees, and automatic computation of penalties.
+
+- **Driver Rating and Feedback System**  
+  - Customers can rate optional drivers and leave feedback for service improvement.
+
+- **Report Generation**  
+  - Export monthly/weekly reports for admin use (e.g., revenue, most rented vehicle).
+
+- **Mobile App Integration**  
+  - Future migration to Android/iOS for booking anytime, anywhere.
+
